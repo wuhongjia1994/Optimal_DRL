@@ -1,0 +1,45 @@
+# training settings
+clip_decay: false   # if true, the clip range is annealling
+cliprange: 0.2      # clip range
+ent_coef: 0.005   # entropy coefficient
+gamma: 0       # discount factor
+lam: 0         # GAE lambda
+lr: 0.0005          # learning rate
+lr_decay: true    # if true, the learning rate is annealling
+max_grad_norm: 0.5   # gradient constraint
+n_total_steps: 500000   # total learning steps
+vf_coef: 0.5              # coef of value loss
+huber_delta: 1.3        # delta in huber loss
+
+runner_steps: 128         # steps in a sampling phase, 400 is recommended for 3s5z_vs_3s6z, but the performance is poor now
+nminibatch: 4           # mini-batch number
+noptepochs: 2          # epoch number
+nenv_run: 4               # parallel envs
+
+# env setting
+nstack_ob: 1      # the number of stacked frames for observation, if use mlp, 4 is recommended
+nstack_state: 1   # the number of stacked frames for state,  if use mlp, 4 is recommended
+ob_norm: false    # if true, normalize the observation using running mean and std.
+ret_norm: true    # if true, scale the reward according to averaged returns. if value_norm and popart is true, this should be false
+
+# map name
+map_id: 2s3z    # map id
+
+layer_n: 1      # layer num for the input mlp
+hidden_size: 64   # number of unit in hidden layers
+
+feat_norm: false   # if true, apply layer norm on the input
+use_rnn: false     # whether use rnn
+rnn_chunk: null   # if rnn_chunk is not None, assert runner_steps%rnn_chunk == 0.
+
+value_norm: false  # if true, normalized the value, not used in conjunction with ret_norm.
+use_popart: false # if value_norm is false, this term can be neglected.
+
+# others
+save_interval: 100
+log_interval: 4
+seed: null
+env_seed: 4
+
+ippo: true  #
+squash: true    #
